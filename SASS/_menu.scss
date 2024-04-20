@@ -1,0 +1,36 @@
+// Variables
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+
+// Estilos para el menú de navegación
+.navbar {
+  background-color: $primary-color;
+  padding: 15px 0;
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    
+    li {
+      display: inline-block;
+      
+      a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        transition: background-color 0.3s;
+        
+        &:hover {
+          background-color: $secondary-color;
+        }
+      }
+    }
+    
+    .menu-image {
+      width: 30px; // Tamaño de la imagen en píxeles
+      height: auto; // La altura se ajustará automáticamente para mantener la proporción
+    }
+  }
+}
