@@ -175,6 +175,14 @@
   display: block;
 }
 
+.menu_abajo {
+  top: 600px;
+  position: absolute;
+  bottom: 20px; /* Ajusta la posición vertical de los botones */
+  left: 0;
+  width: 100%;
+}
+
 body {
   background-color: hwb(214 27% 66%);
   margin: 0;
@@ -233,7 +241,7 @@ button:hover {
   border-radius: 5px; /* Agregar bordes redondeados a las imágenes */
   box-shadow: 0 0 10px rgb(234, 231, 231); /* Agregar sombra a las imágenes */
   position: absolute; /* Posicionamiento absoluto para controlar la posición */
-  top: 150px; /* Ajustar la posición vertical según tus necesidades */
+  top: 120px; /* Ajustar la posición vertical según tus necesidades */
   left: 50%; /* Alinear la imagen horizontalmente en el centro del contenedor */
   transform: translateX(-50%); /* Centrar la imagen horizontalmente */
 }
