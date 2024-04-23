@@ -1,0 +1,124 @@
+.menu-toggle {
+    position: fixed;
+    top: 5px;
+    left: 2px;
+    background-color: #06142D;
+    &:hover {
+        background-color: darken(#840607, 10%); 
+      };
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10000; /* Asegurar que el menú esté por delante de las imágenes */
+}
+
+#menu {
+    display: none; // Ocultar el menú por defecto
+    position: fixed;
+    top: 50%; // Colocar el menú en la mitad vertical de la pantalla
+    left: 0;
+    width: 25%; // Ancho del menú al desplegarse
+    background-color: #06142D; // Fondo azul
+    color: #fff; // Texto blanco
+    transform: translateY(-50%); // Centrar verticalmente el menú
+    padding: 300px  10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Asegurar que el menú esté por delante de las imágenes */
+}
+
+.menu-toggle:checked ~ #menu {
+    display: block; // Mostrar el menú cuando el checkbox está marcado
+}
+
+
+
+body {
+    background-color: hwb(214 27% 66%); // Fondo de toda la página gris
+    margin: 0; // Eliminar márgenes predeterminados del body
+    padding: 0; // Eliminar relleno predeterminado del body
+}
+
+.title {
+    text-align: center; // Centrar el título
+    width: 100%; // Asegurar que el título ocupe todo el ancho disponible
+    margin-top: 50px; // Espacio superior para separar el título del menú
+}
+
+button {
+    top: 10px;
+    width: 100%;
+    border-radius: 5px;
+    background-color:  #06142D; 
+    color: #f7f1f1; 
+    border: none;
+    padding: 15px 0; 
+    font-size: 16px; 
+    font-family: 'Asap', sans-serif; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+
+    &:hover {
+      background-color: darken(#840607, 10%); 
+    }
+  }
+  
+.page-container {
+    padding: 20px; /* Espacio alrededor del contenido */
+    display: flex; /* Mostrar los elementos en línea (horizontalmente) */
+    justify-content: center; /* Centrar los elementos horizontalmente */
+    margin-top: 20px; /* Espacio superior para separar el contenedor del título */
+    overflow: hidden; /* Ocultar el desbordamiento */
+    height: 100vh; /* Establecer la altura del contenedor como el 100% de la altura de la ventana */
+}
+
+
+.carousel {
+    display: flex; /* Mostrar las imágenes en línea (horizontalmente) */
+    align-items: center; /* Centrar verticalmente las imágenes en la mitad de la pantalla */
+    animation: desplazar 20s linear infinite; /* Animación de desplazamieto */
+}
+
+
+.vertical-image {
+    margin: 0 10px; /* Margen horizontal entre las imágenes */
+    max-height: 300px; /* Establecer la altura máxima para cada imagen */
+    width: 200px; /* Ancho fijo para cada imagen */
+    border-radius: 10px; /* Agregar bordes redondeados a las imágenes */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Agregar sombra a las imágenes */
+}
+
+.image2 {
+    max-height: 120px; /* Establecer la altura máxima para cada imagen */
+    width: 120px; /* Ancho fijo para cada imagen */
+    border-radius: 5px; /* Agregar bordes redondeados a las imágenes */
+    box-shadow: 0 0 10px rgb(234, 231, 231); /* Agregar sombra a las imágenes */
+    position: absolute; /* Posicionamiento absoluto para controlar la posición */
+    top: 150px; /* Ajustar la posición vertical según tus necesidades */
+    left: 50%; /* Alinear la imagen horizontalmente en el centro del contenedor */
+    transform: translateX(-50%); /* Centrar la imagen horizontalmente */
+}
+
+
+
+@keyframes desplazar {
+    
+    0% {
+        transform: translateX(0); /* Comienza desde la posición original */
+    }
+    100% {
+        transform: translateX(-400px); /* Se desplaza completamente hacia la izquierda */
+    }
+
+    0% {
+        transform: translateX(0); /* Comienza desde la posición original */
+    }
+    100% {
+        transform: translateX(-400px); /* Se desplaza completamente hacia la izquierda */
+    }
+}
+.footer-line {
+    width: 100%; // Asegurar que la línea roja ocupe todo el ancho disponible
+    height: 30px; // Altura de la línea
+}
