@@ -277,7 +277,7 @@ button:hover {
 .carousel {
   display: flex; /* Mostrar las imágenes en línea (horizontalmente) */
   align-items: center; /* Centrar verticalmente las imágenes en la mitad de la pantalla */
-  animation: desplazar 16s linear infinite; /* Animación de desplazamieto */
+  animation: desplazar 30s linear infinite; /* Animación de desplazamieto */
 }
 
 .vertical-image {
@@ -339,11 +339,10 @@ h7 {
   background-color: #840607;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #202e3b;
+.movie-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .container {
@@ -353,12 +352,6 @@ body {
   background-color: #929292;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.movie-info {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
 }
 
 .movie-image {
@@ -425,6 +418,12 @@ body {
   grid-gap: 10px;
   justify-content: center;
   align-items: center;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #969597;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 button a:nth-child(n+2):nth-child(-n+10) {
@@ -455,15 +454,24 @@ button a:nth-child(n+62):nth-child(-n+70) {
   width: calc(10% - 10px);
 }
 
-.linea-roja {
+button a:nth-child(n+72):nth-child(-n+80) {
+  width: calc(10% - 10px);
+}
+
+.linea-roja-dos {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;
-  background-color: red;
+  background-color: #840607;
   color: white;
   font-size: 18px;
   font-weight: bold;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 50%;
 }
 
 #silla {
@@ -486,6 +494,11 @@ button a:nth-child(n+62):nth-child(-n+70) {
   visibility: visible; /* Mostrar el menú */
   opacity: 1; /* Hacerlo completamente visible */
   transition-delay: 0s; /* Elimina la demora para la transición de visibilidad */
+}
+
+.boton_no {
+  background-color: #f4f2f2;
+  color: #f7f1f1;
 }
 
 * {
