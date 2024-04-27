@@ -16,7 +16,7 @@ $box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 
-.container {
+.cuadro {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -135,22 +135,22 @@ $box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         width: calc(100% / 10 - 10px);
       }
       
-      // Estilos para la línea roja que simula la pantalla}
-      .linea-roja-dos {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 50px;
-        background-color: #840607;
-        color: white;
-        font-size: 18px;
-        font-weight: bold;
-        margin: 20px auto;
-        padding: 20px;
-        border-radius: $border-radius;
-        box-shadow: $box-shadow;
-        max-width: 50%;
-      }
+        // Estilos para la línea roja que simula la pantalla}
+        .linea-roja-dos {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 50px;
+          background-color: #840607;
+          color: white;
+          font-size: 18px;
+          font-weight: bold;
+          margin: 20px auto;
+          padding: 20px;
+          border-radius: $border-radius;
+          box-shadow: $box-shadow;
+          max-width: 50%;
+        }
 
       #silla {
         position: fixed;
