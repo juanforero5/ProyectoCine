@@ -4,8 +4,8 @@
     left: 2px;
     background-color: #06142D;
     &:hover {
-        background-color: darken(#840607, 10%); 
-      };
+        background-color: darken(#840607, 10%); };
+
     color: #fff;
     padding: 20px;
     border-radius: 5px;
@@ -13,32 +13,105 @@
     z-index: 10000; /* Asegurar que el menú esté por delante de las imágenes */
 }
 
-#menu {
-    display: none; // Ocultar el menú por defecto
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh; /* Altura igual al 100% del viewport height */
+    margin: 0; /* Eliminar márgenes para evitar espacios innecesarios */
+    background-color: #840607; /* Color de fondo rojo */
+}
+
+h11 {
+    color: #f7f1f1; /* Color blanco para el texto */
+    font-size: 1.5rem; /* Tamaño de fuente */
+    
+}
+
+
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px; /* Margen en la parte superior */
+    margin-right: auto; /* Margen en la parte derecha (automático para centrar horizontalmente) */
+    margin-bottom: 1px; /* Margen en la parte inferior */
+    margin-left: auto; /* Margen en la parte izquierda (automático para centrar horizontalmente) */
+}
+
+
+  
+
+h4 {
+    color: #840607; /* Color amarillo para el texto "CINE" */
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+h5 {
+    color: #06142D; /* Color amarillo para el texto "CINE" */
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.menu-toggle {
     position: fixed;
-    top: 50%; // Colocar el menú en la mitad vertical de la pantalla
-    left: 0;
-    width: 25%; // Ancho del menú al desplegarse
-    background-color: #06142D; // Fondo azul
-    color: #fff; // Texto blanco
-    transform: translateY(-50%); // Centrar verticalmente el menú
-    padding: 300px  10px;
+    top: 5px;
+    left: 2px;
+    background-color: #06142D;
+    color: #fff;
+    padding: 20px;
     border-radius: 5px;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #06142D;
+    color: #fff;
+    visibility: hidden; /* Inicialmente oculto */
+    opacity: 0; /* Inicialmente transparente */
+    padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Asegurar que el menú esté por delante de las imágenes */
+    z-index: 1000;
+    transition: opacity 0.01s ease, visibility 0s linear 0.01s; /* Agrega una pequeña demora para la transición de visibilidad */
 }
 
 .menu-toggle:checked ~ #menu {
-    display: block; // Mostrar el menú cuando el checkbox está marcado
+    visibility: visible; /* Mostrar el menú */
+    opacity: 1; /* Hacerlo completamente visible */
+    width: 60%; /* Ancho del menú desplegado */
+    max-width: 300px; /* Ancho máximo del menú para asegurar que no sea demasiado ancho */
 }
 
-.menu_abajo {
-    top: 600px;
-    position: absolute;
-    bottom: 20px; /* Ajusta la posición vertical de los botones */
-    left: 0;
-    width: 100%;
+
+
+.menu-top {
+    margin-bottom: 10px; /* Espacio entre la parte superior y el contenido medio */
+    margin-top: -10px; /* Mover el contenido hacia arriba */
 }
+
+.menu-medio {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu-abajo {
+    width: 100%;
+    position: absolute;
+    bottom: 1px; /* Ajusta la posición vertical según tus necesidades */
+    transform: translateY(-50%);
+}
+
+
 
 body {
     background-color: hwb(214 27% 66%); // Fondo de toda la página gris
@@ -46,15 +119,10 @@ body {
     padding: 0; // Eliminar relleno predeterminado del body
 }
 
-.title {
-    text-align: center; // Centrar el título
-    width: 100%; // Asegurar que el título ocupe todo el ancho disponible
-    margin-top: 50px; // Espacio superior para separar el título del menú
-}
 
 button {
     top: 10px;
-    width: 100%;
+    width: 90%;
     border-radius: 5px;
     background-color:  #06142D; 
     color: #f7f1f1; 
@@ -70,20 +138,16 @@ button {
     }
   }
   
-.page-container {
-    padding: 20px; /* Espacio alrededor del contenido */
-    display: flex; /* Mostrar los elementos en línea (horizontalmente) */
-    justify-content: center; /* Centrar los elementos horizontalmente */
-    margin-top: 20px; /* Espacio superior para separar el contenedor del título */
-    overflow: hidden; /* Ocultar el desbordamiento */
-    height: 100vh; /* Establecer la altura del contenedor como el 100% de la altura de la ventana */
+  .page-container {
+    padding: 20px;
+    margin-top: 20px;
 }
 
 
 .carousel {
     display: flex; /* Mostrar las imágenes en línea (horizontalmente) */
     align-items: center; /* Centrar verticalmente las imágenes en la mitad de la pantalla */
-    animation: desplazar 20s linear infinite; /* Animación de desplazamieto */
+    animation: desplazar 16s linear infinite; /* Animación de desplazamieto */
 }
 
 
@@ -96,15 +160,35 @@ button {
 }
 
 .image2 {
-    max-height: 120px; /* Establecer la altura máxima para cada imagen */
-    width: 120px; /* Ancho fijo para cada imagen */
+    max-height: 100px; /* Establecer la altura máxima para cada imagen */
+    width: 100px; /* Ancho fijo para cada imagen */
     border-radius: 5px; /* Agregar bordes redondeados a las imágenes */
     box-shadow: 0 0 10px rgb(234, 231, 231); /* Agregar sombra a las imágenes */
     position: absolute; /* Posicionamiento absoluto para controlar la posición */
-    top: 120px; /* Ajustar la posición vertical según tus necesidades */
+    top: 80px; /* Ajustar la posición vertical según tus necesidades */
     left: 50%; /* Alinear la imagen horizontalmente en el centro del contenedor */
     transform: translateX(-50%); /* Centrar la imagen horizontalmente */
 }
+
+h8 {
+    color: #ffffff;
+    text-align: center;
+    font-size: 1rem;
+    position: absolute;
+    top: 200px; /* Ajusta la posición vertical según tus necesidades */
+    left: 50%; /* Alinear horizontalmente en el centro */
+    transform: translateX(-50%); /* Centrar horizontalmente */
+  }
+  
+  h7 {
+    color: #f7f7f7;
+    text-align: center;
+    font-size: 0.7rem;
+    position: absolute;
+    top: 220px; /* Ajusta la posición vertical según tus necesidades */
+    left: 50%; /* Alinear horizontalmente en el centro */
+    transform: translateX(-50%); /* Centrar horizontalmente */
+  }
 
 
 
@@ -123,8 +207,13 @@ button {
     100% {
         transform: translateX(-400px); /* Se desplaza completamente hacia la izquierda */
     }
+
+    
 }
-.footer-line {
-    width: 100%; // Asegurar que la línea roja ocupe todo el ancho disponible
-    height: 30px; // Altura de la línea
+
+.linea-roja {
+    width: 100%;
+    height: 20px; /* Grosor de la línea en píxeles */
+    background-color: #840607;
+
 }

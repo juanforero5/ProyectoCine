@@ -156,31 +156,94 @@
   background-color: #530404;
 }
 
-#menu {
-  display: none;
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh; /* Altura igual al 100% del viewport height */
+  margin: 0; /* Eliminar márgenes para evitar espacios innecesarios */
+  background-color: #840607; /* Color de fondo rojo */
+}
+
+h11 {
+  color: #f7f1f1; /* Color blanco para el texto */
+  font-size: 1.5rem; /* Tamaño de fuente */
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px; /* Margen en la parte superior */
+  margin-right: auto; /* Margen en la parte derecha (automático para centrar horizontalmente) */
+  margin-bottom: 1px; /* Margen en la parte inferior */
+  margin-left: auto; /* Margen en la parte izquierda (automático para centrar horizontalmente) */
+}
+
+h4 {
+  color: #840607; /* Color amarillo para el texto "CINE" */
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+h5 {
+  color: #06142D; /* Color amarillo para el texto "CINE" */
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.menu-toggle {
   position: fixed;
-  top: 50%;
-  left: 0;
-  width: 25%;
+  top: 5px;
+  left: 2px;
   background-color: #06142D;
   color: #fff;
-  transform: translateY(-50%);
-  padding: 300px 10px;
+  padding: 20px;
   border-radius: 5px;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #06142D;
+  color: #fff;
+  visibility: hidden; /* Inicialmente oculto */
+  opacity: 0; /* Inicialmente transparente */
+  padding: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Asegurar que el menú esté por delante de las imágenes */
+  z-index: 1000;
+  transition: opacity 0.01s ease, visibility 0s linear 0.01s; /* Agrega una pequeña demora para la transición de visibilidad */
 }
 
 .menu-toggle:checked ~ #menu {
-  display: block;
+  visibility: visible; /* Mostrar el menú */
+  opacity: 1; /* Hacerlo completamente visible */
+  width: 60%; /* Ancho del menú desplegado */
+  max-width: 300px; /* Ancho máximo del menú para asegurar que no sea demasiado ancho */
 }
 
-.menu_abajo {
-  top: 600px;
-  position: absolute;
-  bottom: 20px; /* Ajusta la posición vertical de los botones */
-  left: 0;
+.menu-top {
+  margin-bottom: 10px; /* Espacio entre la parte superior y el contenido medio */
+  margin-top: -10px; /* Mover el contenido hacia arriba */
+}
+
+.menu-medio {
   width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menu-abajo {
+  width: 100%;
+  position: absolute;
+  bottom: 1px; /* Ajusta la posición vertical según tus necesidades */
+  transform: translateY(-50%);
 }
 
 body {
@@ -189,15 +252,9 @@ body {
   padding: 0;
 }
 
-.title {
-  text-align: center;
-  width: 100%;
-  margin-top: 50px;
-}
-
 button {
   top: 10px;
-  width: 100%;
+  width: 90%;
   border-radius: 5px;
   background-color: #06142D;
   color: #f7f1f1;
@@ -213,18 +270,14 @@ button:hover {
 }
 
 .page-container {
-  padding: 20px; /* Espacio alrededor del contenido */
-  display: flex; /* Mostrar los elementos en línea (horizontalmente) */
-  justify-content: center; /* Centrar los elementos horizontalmente */
-  margin-top: 20px; /* Espacio superior para separar el contenedor del título */
-  overflow: hidden; /* Ocultar el desbordamiento */
-  height: 100vh; /* Establecer la altura del contenedor como el 100% de la altura de la ventana */
+  padding: 20px;
+  margin-top: 20px;
 }
 
 .carousel {
   display: flex; /* Mostrar las imágenes en línea (horizontalmente) */
   align-items: center; /* Centrar verticalmente las imágenes en la mitad de la pantalla */
-  animation: desplazar 20s linear infinite; /* Animación de desplazamieto */
+  animation: desplazar 16s linear infinite; /* Animación de desplazamieto */
 }
 
 .vertical-image {
@@ -236,14 +289,34 @@ button:hover {
 }
 
 .image2 {
-  max-height: 120px; /* Establecer la altura máxima para cada imagen */
-  width: 120px; /* Ancho fijo para cada imagen */
+  max-height: 100px; /* Establecer la altura máxima para cada imagen */
+  width: 100px; /* Ancho fijo para cada imagen */
   border-radius: 5px; /* Agregar bordes redondeados a las imágenes */
   box-shadow: 0 0 10px rgb(234, 231, 231); /* Agregar sombra a las imágenes */
   position: absolute; /* Posicionamiento absoluto para controlar la posición */
-  top: 120px; /* Ajustar la posición vertical según tus necesidades */
+  top: 80px; /* Ajustar la posición vertical según tus necesidades */
   left: 50%; /* Alinear la imagen horizontalmente en el centro del contenedor */
   transform: translateX(-50%); /* Centrar la imagen horizontalmente */
+}
+
+h8 {
+  color: #ffffff;
+  text-align: center;
+  font-size: 1rem;
+  position: absolute;
+  top: 200px; /* Ajusta la posición vertical según tus necesidades */
+  left: 50%; /* Alinear horizontalmente en el centro */
+  transform: translateX(-50%); /* Centrar horizontalmente */
+}
+
+h7 {
+  color: #f7f7f7;
+  text-align: center;
+  font-size: 0.7rem;
+  position: absolute;
+  top: 220px; /* Ajusta la posición vertical según tus necesidades */
+  left: 50%; /* Alinear horizontalmente en el centro */
+  transform: translateX(-50%); /* Centrar horizontalmente */
 }
 
 @keyframes desplazar {
@@ -260,9 +333,159 @@ button:hover {
     transform: translateX(-400px); /* Se desplaza completamente hacia la izquierda */
   }
 }
-.footer-line {
+.linea-roja {
   width: 100%;
-  height: 30px;
+  height: 20px; /* Grosor de la línea en píxeles */
+  background-color: #840607;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #202e3b;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #929292;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.movie-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.movie-image {
+  max-height: 100px; /* Establecer la altura máxima para cada imagen */
+  width: 100px; /* Ancho fijo para cada imagen */
+  border-radius: 5px; /* Agregar bordes redondeados a las imágenes */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Agregar sombra a las imágenes */
+  margin-right: 20px; /* Margen a la derecha para separar la imagen de la descripción */
+}
+
+.movie-description {
+  flex: 1; /* Hacer que la descripción ocupe el espacio restante */
+}
+
+.movie-title {
+  margin-top: 0;
+  font-size: 24px;
+  color: #000000;
+}
+
+.movie-description p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #000000;
+}
+
+.movie-review {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #000000;
+}
+
+.buy-ticket {
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  background-color: #840607;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+.buy-ticket:hover {
+  background-color: #202e3b;
+}
+
+.back-link {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #840607;
+  text-decoration: none;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.comprar {
+  display: grid;
+  grid-template-columns: repeat(10, auto);
+  grid-gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+button a:nth-child(n+2):nth-child(-n+10) {
+  width: calc(10% - 10px);
+}
+
+button a:nth-child(n+12):nth-child(-n+20) {
+  width: calc(10% - 10px);
+}
+
+button a:nth-child(n+22):nth-child(-n+30) {
+  width: calc(10% - 10px);
+}
+
+button a:nth-child(n+32):nth-child(-n+40) {
+  width: calc(10% - 10px);
+}
+
+button a:nth-child(n+42):nth-child(-n+50) {
+  width: calc(10% - 10px);
+}
+
+button a:nth-child(n+52):nth-child(-n+60) {
+  width: calc(10% - 10px);
+}
+
+button a:nth-child(n+62):nth-child(-n+70) {
+  width: calc(10% - 10px);
+}
+
+.linea-roja {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  background-color: red;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#silla {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #06142D;
+  color: #fff;
+  visibility: hidden; /* Inicialmente oculto */
+  opacity: 0; /* Inicialmente transparente */
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Agrega una pequeña demora para la transición de visibilidad */
+}
+
+.mostrarSillas:checked ~ #silla {
+  visibility: visible; /* Mostrar el menú */
+  opacity: 1; /* Hacerlo completamente visible */
+  transition-delay: 0s; /* Elimina la demora para la transición de visibilidad */
 }
 
 * {

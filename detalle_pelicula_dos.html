@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/detalle.css">
+    <title>Detalle de Película</title>
+</head>
+<body>
+    <div class="container">
+        <img src="img\movie1.jpeg" alt="Movie Image" class="movie-image">
+        <h1 class="movie-title">Título de la Película</h1>
+        <p class="movie-description">
+            Descripción de la película. Aquí puedes proporcionar una sinopsis o detalles adicionales sobre la película.
+        </p>
+        <p class="movie-review">
+            Reseña de la película. Aquí puedes proporcionar una breve reseña de la película.
+        </p>
+        <form action="#" class="booking-form">
+            <label for="sede">Sede:</label>
+            <select name="sede" id="sede">
+                <option value="sede1">Sede 1</option>
+                <option value="sede2">Sede 2</option>
+                <option value="sede3">Sede 3</option>
+            </select>
+            <label for="horario">Horario:</label>
+            <select name="horario" id="horario">
+                <option value="horario1">Horario 1</option>
+                <option value="horario2">Horario 2</option>
+                <option value="horario3">Horario 3</option>
+            </select>
+            <label for="cantidad">Cantidad de entradas:</label>
+            <select name="cantidad" id="cantidad">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <input type="submit" value="Comprar Boletos" class="buy-ticket">
+        </form>
+        <a href="menu_inicio.html" class="back-link">Volver a la cartelera</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+// Variables
+$primary-color: #840607;
+$secondary-color: #202e3b;
+$background-color: #202e3b;
+$text-color: #000000;
+$text-secondary-color: #000000;
+$border-radius: 8px;
+$box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+// Estilos SCSS
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: $background-color;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #929292;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+}
+
+.movie-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.movie-image {
+    max-height: 100px; /* Establecer la altura máxima para cada imagen */
+    width: 100px; /* Ancho fijo para cada imagen */
+    border-radius: 5px; /* Agregar bordes redondeados a las imágenes */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Agregar sombra a las imágenes */
+    margin-right: 20px; /* Margen a la derecha para separar la imagen de la descripción */
+}
+
+.movie-description {
+    flex: 1; /* Hacer que la descripción ocupe el espacio restante */
+}
+
+.movie-title {
+    margin-top: 0;
+    font-size: 24px;
+    color: $text-color;
+}
+
+.movie-description p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: $text-secondary-color;
+}
+
+.movie-review {
+    margin-top: 20px;
+    font-size: 16px;
+    color: $text-secondary-color;
+}
+
+.buy-ticket {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    background-color: $primary-color;
+    border: none;
+    border-radius: $border-radius;
+    padding: 10px 20px;
+    text-decoration: none;
+
+    &:hover {
+        background-color: $secondary-color;
+    }
+}
+
+.back-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: $primary-color;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }}
+
+    .comprar {
+        display: grid;
+        grid-template-columns: repeat(10, auto); // 10 botones por fila
+        grid-gap: 10px; // Espacio entre botones
+        justify-content: center; // Centrar los botones horizontalmente
+        align-items: center; // Centrar los botones verticalmente
+      }
+      
+ 
+      // Estilos específicos para cada fila
+      // Aquí se ajusta el ancho de cada botón para que quede organizado en filas y columnas
+      button a:nth-child(n+2):nth-child(-n+10) {
+        width: calc(100% / 10 - 10px); // Ancho dividido entre número de botones por fila menos el espacio entre botones
+      }
+      
+      button a:nth-child(n+12):nth-child(-n+20) {
+        width: calc(100% / 10 - 10px);
+      }
+      
+      button a:nth-child(n+22):nth-child(-n+30) {
+        width: calc(100% / 10 - 10px);
+      }
+      
+      button a:nth-child(n+32):nth-child(-n+40) {
+        width: calc(100% / 10 - 10px);
+      }
+      
+      button a:nth-child(n+42):nth-child(-n+50) {
+        width: calc(100% / 10 - 10px);
+      }
+      
+      button a:nth-child(n+52):nth-child(-n+60) {
+        width: calc(100% / 10 - 10px);
+      }
+      
+      button a:nth-child(n+62):nth-child(-n+70) {
+        width: calc(100% / 10 - 10px);
+      }
+      
+      // Estilos para la línea roja que simula la pantalla}
+      .linea-roja {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        background-color: red;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      #silla {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #06142D;
+        color: #fff;
+        visibility: hidden; /* Inicialmente oculto */
+        opacity: 0; /* Inicialmente transparente */
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Agrega una pequeña demora para la transición de visibilidad */
+    }
+    
+    .mostrarSillas:checked ~ #silla {
+        visibility: visible; /* Mostrar el menú */
+        opacity: 1; /* Hacerlo completamente visible */
+        transition-delay: 0s; /* Elimina la demora para la transición de visibilidad */
+    }
+    
