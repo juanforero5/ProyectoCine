@@ -53,6 +53,9 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+button:disabled {
+  background-color: rgba(107, 31, 31, 0.87);
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -65,4 +68,14 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px; 
+}
+
+.selected-seat {
+  background-color: rgba(230, 201, 72, 0.87);
 }

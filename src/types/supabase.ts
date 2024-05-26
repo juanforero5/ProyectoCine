@@ -64,21 +64,31 @@ export type Database = {
       }
       Tickets: {
         Row: {
+          function_id: number | null
           id: number
           seat_id: string | null
           user_id: string | null
         }
         Insert: {
+          function_id?: number | null
           id?: number
           seat_id?: string | null
           user_id?: string | null
         }
         Update: {
+          function_id?: number | null
           id?: number
           seat_id?: string | null
           user_id?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "Tickets_function_id_fkey"
+            columns: ["function_id"]
+            isOneToOne: false
+            referencedRelation: "Functions"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "Tickets_user_id_fkey"
             columns: ["user_id"]
