@@ -1,35 +1,27 @@
 import { useEffect } from 'react'
-import { supabase } from './main'
-import { Login } from './components/Login'
-import { Movies } from './components/Movies';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { router, supabase } from './main'
+import { Outlet, useLocation } from 'react-router-dom'
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Login />,
-  },
-  {
-    path: "/movies",
-    element: <Movies />,
-  },
-]);
+
 
 function App() {
+  const location = useLocation()
 
   useEffect(() => {
     const check = async () => {
       const session = (await supabase.auth.getSession()).data.session
-      if (session === null)
+      if (session === null && location.pathname != '/') {
+        console.log(location.pathname)
         router.navigate('/')
+        return
+      }
+
+
     }
     check()
   }, [])
   return (
-    <RouterProvider router={router}/>
+    <Outlet></Outlet>
   )
 }
 

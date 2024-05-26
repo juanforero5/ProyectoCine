@@ -1,42 +1,40 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { supabase } from "../main";
+import { Movie } from '../types';
+import { Link } from 'react-router-dom';
 
+const getMovies = async () => {
+  return await supabase.from('Movies').select('*');
+}
 export const Movies = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [errorText, setError] = useState<string | null>(null);
+  const [movies, setMovies] = useState<Movie[]>([]);
 
-    const handleLogin = async () => {
-        const { data, error } = await supabase.auth.signUp({
-            email,
-            password
-        });
+  useEffect(() => {
+    getMovies().then(r => {
+      const {data, error} = r
+      if (error) {
+        return
+      }
 
-        if (error) {
-            setError(error.message)
-        } else {
-            // Handle successful login
-            console.log('User logged in:', data);
-        }
-    };
+      setMovies(data)
+    })
+  }, [])
+  return (
+    <>
+      <h1>
+        Movies
+      </h1>
 
-    return (
-        <div>
-            <h2>Login</h2>
-            {errorText && <div>{errorText}</div>}
-            <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button onClick={handleLogin}>Login</button>
-        </div>
-    );
+      <ul>
+          {movies.map(m => (
+            <li key={m.id}>
+              <Link to={m.id+''} >
+                <h2>{m.title}</h2>
+              </Link>
+              <div>{m.synopsis}</div>
+            </li>
+          ))}
+      </ul>
+    </>
+  );
 };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { supabase } from "../main";
+import { router, supabase } from "../main";
 
 export const Login = () => {
     const [email, setEmail] = useState('');
@@ -7,7 +7,7 @@ export const Login = () => {
     const [errorText, setError] = useState<string | null>(null);
 
     const handleLogin = async () => {
-        const { data, error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signInWithPassword({
             email,
             password
         });
@@ -17,6 +17,7 @@ export const Login = () => {
         } else {
             // Handle successful login
             console.log('User logged in:', data);
+            router.navigate('movies')
         }
     };
 
