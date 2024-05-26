@@ -1,11 +1,39 @@
 import { useEffect, useState } from 'react';
-import { supabase } from "../main";
+import { router, supabase } from "../main";
 import { Movie, MovieFunction, Ticket } from '../types';
 import { useLocation } from 'react-router-dom';
 import { SEAT_IDS } from '../types/constants';
 
 // ID de la funcion y la silla del ticket
 type FunctionTicketsMap = Record<number, Ticket['seat_id'][]>
+
+async function persistTickets(function_id: number, ts: string[]) {
+  const { data: { user }, error } = await supabase.auth.getUser()
+  if (error) {
+    console.log(error, 'persistTickets')
+    return
+  }
+
+  if (!user) {
+    console.log('No hay usuario')
+    return
+  }
+
+  const { error: insertE } = await supabase.from('Tickets').insert(ts.map(t => (
+    {
+      function_id,
+      seat_id: t,
+      user_id: user.id,
+    }
+  )))
+
+  if (insertE) {
+    console.log(insertE)
+    return
+  }
+
+  router.navigate('/my-tickets')
+}
 
 export const MovieDetails = () => {
   const location = useLocation()
@@ -43,17 +71,17 @@ export const MovieDetails = () => {
     });
   }
 
-  const buyTickets = () => {
+  const buyTickets = (f: number) => {
     if (selectedTickets.length === 0) {
       alert('No hay tickets seleccionados')
       return
     }
 
-
+    persistTickets(f, selectedTickets)
   }
 
   useEffect(() => {
-    getMovieDetails().then(r => console.log(movieTickets))
+    getMovieDetails()
   }, [])
 
   return (
@@ -82,7 +110,7 @@ export const MovieDetails = () => {
                 </div>
               </div>
 
-              <button onClick={buyTickets}>Comprar</button>
+              <button onClick={() => buyTickets(mf.id)}>Comprar</button>
             </div>
           ))}
         </>)
