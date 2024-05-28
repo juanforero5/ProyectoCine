@@ -21,17 +21,17 @@ export const Movies = () => {
   }, [])
   return (
     <>
-      <h1>
+      <h1 className='mb-5'>
         Movies
       </h1>
 
       <ul>
         {movies.map(m => (
-          <li key={m.id} style={{display: 'flex', gap: '30px', marginBottom: '30px'}}>
-            <img src={m.img!} alt="" style={{ height: 350 }} />
+          <li key={m.id} className='flex gap-10 mb-5'>
+            <img src={m.img!} alt="" className='rounded-md h-[350px]' />
             <div>
               <Link to={m.id + ''} >
-                <h2>{m.title}</h2>
+                <h2 className='text-2xl mb-3'>{m.title}</h2>
               </Link>
               <div>{m.synopsis}</div>
             </div>

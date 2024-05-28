@@ -22,30 +22,32 @@ export const Login = () => {
     };
 
     return (
-        <div>
-            <h1>Login</h1>
+        <div className='flex flex-col'>
+            <h1 className='mb-5'>Inicio de Sesión</h1>
             {errorText && <div>{errorText}</div>}
-            <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button onClick={handleLogin}>Login</button>
+            <div className='flex flex-col max-w-96 min-w-80 gap-5 mx-auto my-7'>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button onClick={handleLogin}>Login</button>
+            </div>
             <h2>Usuarios de prueba</h2>
             <pre>
                 <div>
-                user1@example.com user1example
+                    user1@example.com user1example
 
                 </div>
                 <div>
-                user2@example.com user2example
+                    user2@example.com user2example
 
                 </div>
             </pre>
@@ -61,7 +63,7 @@ export const Logout = () => {
     doLogout()
     return (
         <>
-        <h1>Cerrando...</h1>
+            <h1>Cerrando...</h1>
         </>
     )
 }

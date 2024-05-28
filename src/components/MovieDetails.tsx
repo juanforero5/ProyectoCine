@@ -89,7 +89,7 @@ export const MovieDetails = () => {
       {!movie ?
         (<>Cargando detalles de la pelicula...</>) :
         (<>
-          <h1>{movie.title}</h1>
+          <h1 className='mb-5'>{movie.title}</h1>
         </>)
       }
       {!movieFunctions || movieFunctions.length === 0 ?
@@ -97,20 +97,31 @@ export const MovieDetails = () => {
         (<>
           {movieFunctions.map(mf => (
             <div key={mf.id}>
-              <div>
-                <h2>Funciones</h2>
+              <div className='flex flex-col gap-4'>
+                <h2 className='text-3xl'>Funciones</h2>
                 <h3>{mf.room_name}, {mf.date} - {mf.time} - Jardin Plaza</h3>
 
-                <div className='grid-container'>
-                  {SEAT_IDS.map(id => (
-                    <button key={id} className={`${selectedTickets.includes(id) && 'selected-seat'}`}
-                      onClick={() => selectTicket(id)}
-                      disabled={movieTickets[mf.id]?.includes(id)}>{id}</button>
-                  ))}
+                <div className='flex gap-4'>
+                  <div className='w-1/2 grid grid-cols-10 gap-2'>
+                    {SEAT_IDS.map(id => (
+                      <button key={id} className={
+                        `p-1 px-2
+                        ${selectedTickets.includes(id) && 'bg-yellow-600'}
+                        ${movieTickets[mf.id]?.includes(id) && 'bg-red-600/20'}`}
+                        onClick={() => selectTicket(id)}
+                        disabled={movieTickets[mf.id]?.includes(id)}>{id}</button>
+                    ))}
+                  </div>
+                  <div className='w-1/2 flex flex-col gap-2'>
+                    <button className='p-2 px-2 pointer-events-none w-1/4'>Disponibles</button>
+                    <button className='p-2 px-2 pointer-events-none w-1/4 bg-red-600/20'>Ocupados</button>
+                    <button className='p-2 px-2 pointer-events-none w-1/4 bg-yellow-600'>Seleccionados</button>
+                    <button className='p-2ß px-2 pointer-events-none w-1/4 bg-emerald-600'>Míos</button>
+                    <button className='mt-auto' onClick={() => buyTickets(mf.id)}>Comprar</button>
+                  </div>
                 </div>
-              </div>
 
-              <button onClick={() => buyTickets(mf.id)}>Comprar</button>
+              </div>
             </div>
           ))}
         </>)

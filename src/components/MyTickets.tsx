@@ -41,17 +41,18 @@ export const MyTickets = () => {
   }, [])
   return (
     <>
-      <h1>
+      <h1 className='mb-5'>
         Mis Tickets
       </h1>
 
-      <ul>
+      <ul className='flex flex-wrap gap-5'>
         {myTickets.map(t => (
-          <li key={t.id}>
-            <h2>{t.Functions.Movies.title}</h2>
-            <h2>
-              {t.seat_id} - {t.Functions.room_name}
-            </h2>
+          <li key={t.id} className='p-6 rounded-md border border-solid border-white'>
+            <div>{t.Functions.Movies.title}</div>
+            <div className='text-center text-4xl font-semibold mt-3'>
+              {t.seat_id}
+            </div>
+            <div className='text-center mb-3'>{t.Functions.room_name}</div>
             <div>
             {t.Functions.date} - {t.Functions.time}
             </div>
