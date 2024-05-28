@@ -36,7 +36,9 @@ function App() {
        <Link to={'/my-tickets'}>Mis Tickets</Link>
        <Link to={'/cerrar'}>Cerrar Sesión</Link>
       </nav>
-    <Outlet></Outlet>
+      <div style={{paddingRight: '50px', paddingLeft: '50px'}}>
+        <Outlet></Outlet>
+      </div>
     </>
   )
 }

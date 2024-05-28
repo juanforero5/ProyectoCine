@@ -49,9 +49,11 @@ export const MyTickets = () => {
         {myTickets.map(t => (
           <li key={t.id}>
             <h2>{t.Functions.Movies.title}</h2>
-            <div>Sala: {t.Functions.room_name}</div>
+            <h2>
+              {t.seat_id} - {t.Functions.room_name}
+            </h2>
             <div>
-            {t.seat_id} - {t.Functions.date} - {t.Functions.time}
+            {t.Functions.date} - {t.Functions.time}
             </div>
           </li>
         ))}

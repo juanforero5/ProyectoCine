@@ -45,18 +45,21 @@ export type Database = {
         Row: {
           genre: string | null
           id: number
+          img: string | null
           synopsis: string | null
           title: string | null
         }
         Insert: {
           genre?: string | null
           id?: number
+          img?: string | null
           synopsis?: string | null
           title?: string | null
         }
         Update: {
           genre?: string | null
           id?: number
+          img?: string | null
           synopsis?: string | null
           title?: string | null
         }
