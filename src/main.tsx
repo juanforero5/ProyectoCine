@@ -5,7 +5,7 @@ import './index.css'
 
 import { createClient } from '@supabase/supabase-js'
 
-import { Login } from './components/Login'
+import { Login, Logout } from './components/Login'
 import { Movies } from './components/Movies';
 import {
   createBrowserRouter,
@@ -29,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Login />,
+      },
+      {
+        path: "/cerrar",
+        element: <Logout />,
       },
       {
         path: "/movies",

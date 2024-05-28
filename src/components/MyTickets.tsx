@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from "../main";
-import { Movie, MovieFunction, Ticket } from '../types';
-import { Link } from 'react-router-dom';
+import { MovieFunction, Ticket } from '../types';
 
 const getTickets = async () => {
   const { data: { user }, error: uError } = await supabase.auth.getUser()

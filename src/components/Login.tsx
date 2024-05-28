@@ -23,7 +23,7 @@ export const Login = () => {
 
     return (
         <div>
-            <h2>Login</h2>
+            <h1>Login</h1>
             {errorText && <div>{errorText}</div>}
             <input
                 type="email"
@@ -38,6 +38,30 @@ export const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={handleLogin}>Login</button>
+            <h2>Usuarios de prueba</h2>
+            <pre>
+                <div>
+                user1@example.com user1example
+
+                </div>
+                <div>
+                user2@example.com user2example
+
+                </div>
+            </pre>
         </div>
     );
 };
+
+export const Logout = () => {
+    const doLogout = async () => {
+        await supabase.auth.signOut()
+        router.navigate('/')
+    }
+    doLogout()
+    return (
+        <>
+        <h1>Cerrando...</h1>
+        </>
+    )
+}
