@@ -5,7 +5,7 @@
 
  // src/About.tsx
 
- import React from 'react';
+
  import './About.css';
  import VeroImage from '../assets/images/Veronica.jpeg';
  import JuanImage from '../assets/images/Juan.jpeg';
