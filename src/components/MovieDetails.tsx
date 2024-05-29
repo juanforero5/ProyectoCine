@@ -5,25 +5,15 @@ import { useLocation } from 'react-router-dom';
 import { SEAT_IDS } from '../types/constants';
 
 // ID de la funcion y la silla del ticket
-type FunctionTicketsMap = Record<number, Ticket['seat_id'][]>
+type FunctionTicketsMap = Record<number, Record<string, Ticket>>
 
-async function persistTickets(function_id: number, ts: string[]) {
-  const { data: { user }, error } = await supabase.auth.getUser()
-  if (error) {
-    console.log(error, 'persistTickets')
-    return
-  }
 
-  if (!user) {
-    console.log('No hay usuario')
-    return
-  }
-
+async function persistTickets(function_id: number, ts: string[], userID: string) {
   const { error: insertE } = await supabase.from('Tickets').insert(ts.map(t => (
     {
       function_id,
       seat_id: t,
-      user_id: user.id,
+      user_id: userID,
     }
   )))
 
@@ -41,6 +31,22 @@ export const MovieDetails = () => {
   const [movieFunctions, setMovieFunctions] = useState<MovieFunction[] | null>(null);
   const [movieTickets, setMovieTickets] = useState<FunctionTicketsMap>({});
   const [selectedTickets, setSelectedTickets] = useState<string[]>([])
+  const [userId, setUserId] = useState<string | null>(null)
+
+  const getUser = async () => {
+    const { data: { user }, error } = await supabase.auth.getUser()
+    if (error) {
+      console.log(error, 'persistTickets')
+      return
+    }
+
+    if (!user) {
+      console.log('No hay usuario')
+      return
+    }
+
+    setUserId(user.id)
+  }
 
   const getMovieDetails = async () => {
     const movieId = location.pathname.split('/').reverse()[0]
@@ -53,12 +59,20 @@ export const MovieDetails = () => {
     if (functionsError) { return }
     setMovieFunctions(functionsData)
 
-    functionsData.forEach(async fd => {
-      const { data, error } = await supabase.from('Tickets').select('*').eq('function_id', fd.id)
-      if (error) return;
+    const mappedMovieTickets: FunctionTicketsMap = {}
 
-      setMovieTickets(current => ({ ...current, [fd.id]: data.map(t => t.seat_id) }))
-    })
+    for (const fd of functionsData) {
+      const { data, error } = await supabase.from('Tickets').select('*').eq('function_id', fd.id);
+      if (error) continue;
+
+      const reducedTickets = data.reduce((prev, curr) => ({ ...prev, [curr.seat_id!]: curr }), {});
+      mappedMovieTickets[fd.id] = reducedTickets
+    }
+
+    setMovieTickets(current => {
+      console.log(current)
+      return (mappedMovieTickets)
+    });
   }
 
   const selectTicket = (seatId: string) => {
@@ -77,10 +91,12 @@ export const MovieDetails = () => {
       return
     }
 
-    persistTickets(f, selectedTickets)
+    if (userId)
+      persistTickets(f, selectedTickets.map(t => t.split('-')[1]), userId)
   }
 
   useEffect(() => {
+    getUser()
     getMovieDetails()
   }, [])
 
@@ -92,7 +108,7 @@ export const MovieDetails = () => {
           <h1 className='mb-5'>{movie.title}</h1>
         </>)
       }
-      {!movieFunctions || movieFunctions.length === 0 ?
+      {!movieFunctions || movieFunctions.length === 0 || Object.keys(movieTickets).length === 0 || !userId ?
         (<>Cargando detalles de la pelicula...</>) :
         (<>
           {movieFunctions.map(mf => (
@@ -103,14 +119,20 @@ export const MovieDetails = () => {
 
                 <div className='flex gap-4'>
                   <div className='w-1/2 grid grid-cols-10 gap-2'>
-                    {SEAT_IDS.map(id => (
-                      <button key={id} className={
-                        `p-1 px-2
-                        ${selectedTickets.includes(id) && 'bg-yellow-600'}
-                        ${movieTickets[mf.id]?.includes(id) && 'bg-red-600/20'}`}
-                        onClick={() => selectTicket(id)}
-                        disabled={movieTickets[mf.id]?.includes(id)}>{id}</button>
-                    ))}
+                    {SEAT_IDS.map(id => {
+                      const isOfUser = movieTickets[mf.id][id]?.user_id === userId
+                      const isAvailable = movieTickets[mf.id][id] === undefined
+                      return (
+                        <button key={id} className={
+                          `p-1 px-2
+                          ${selectedTickets.includes(mf.id + '-' + id) && 'bg-yellow-600'}
+                          ${isOfUser && 'bg-emerald-600'}
+                          ${!isAvailable && !isOfUser && 'bg-red-600/20'}`}
+                          onClick={() => selectTicket(mf.id + '-' + id)}
+                          disabled={movieTickets[mf.id][id] !== undefined}>{id}</button>
+                      )
+                    }
+                    )}
                   </div>
                   <div className='w-1/2 flex flex-col gap-2'>
                     <button className='p-2 px-2 pointer-events-none w-1/4'>Disponibles</button>
