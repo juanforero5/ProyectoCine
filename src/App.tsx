@@ -10,7 +10,7 @@ function App() {
     const check = async () => {
       const session = (await supabase.auth.getSession()).data.session
       setLoggedIn(session !== null)
-      if (session === null && location.pathname != '/' && location.pathname != '/cerrar') {
+      if (session === null && location.pathname != '/' && location.pathname != '/cerrar' && location.pathname != '/about') {
         console.log(location.pathname)
         router.navigate('/')
         return

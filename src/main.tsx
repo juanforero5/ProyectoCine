@@ -14,6 +14,7 @@ import {
 import { Database } from './types/supabase.ts'
 import { MovieDetails } from './components/MovieDetails.tsx'
 import { MyTickets } from './components/MyTickets.tsx'
+import { About } from './components/About.tsx'
 
 const PROJECT_URL = "https://kekkawwcrzbbxevcjhbp.supabase.co"
 const PROJECT_PUBLIC_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtla2thd3djcnpiYnhldmNqaGJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY2NzgxODQsImV4cCI6MjAzMjI1NDE4NH0.CjJTx9l69zC4PLFJh25ohnFh7DSamz0IM8jQR7Q3Scc"
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: '/my-tickets',
         element: <MyTickets />
+      },
+      {
+        path: '/about',
+        element: <About />
       }
     ]
   }
