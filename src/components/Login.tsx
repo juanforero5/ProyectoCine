@@ -6,12 +6,23 @@ export const Login = () => {
     const [password, setPassword] = useState('');
     const [errorText, setError] = useState<string | null>(null);
 
+    const handleRegister = async () => {
+        const { error } = await supabase.auth.signUp({
+            email,
+            password
+        });
+        if (error) {
+            setError(error.message)
+        } else {
+            alert('Revisa tu email')
+        }
+    };
+
     const handleLogin = async () => {
         const { data, error } = await supabase.auth.signInWithPassword({
             email,
             password
         });
-
         if (error) {
             setError(error.message)
         } else {
@@ -39,6 +50,7 @@ export const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button onClick={handleLogin}>Login</button>
+                <button onClick={handleRegister}>Registrar</button>
             </div>
             <h2>Usuarios de prueba</h2>
             <pre>

@@ -19,7 +19,7 @@
 }
 
 input {
-  @apply p-2 rounded-md
+  @apply p-2 rounded-md text-gray-600
 }
 #root {
   min-width: 100%;
