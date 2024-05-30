@@ -10,6 +10,7 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -42,6 +43,10 @@ body {
   display: flex;
   min-height: 100vh;
   min-width: 100vw;
+  background-image: url('/Sala.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 h1 {

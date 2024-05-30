@@ -16,7 +16,7 @@
   }
   
   .member-card {
-    background-color: #fff;
+    background-color: #1a1a1a;
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 16px;
@@ -35,6 +35,6 @@
   
   .member-info {
     text-align: left;
-    color: black;
+    color: whitesmoke;
   }
   

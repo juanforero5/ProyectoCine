@@ -35,8 +35,9 @@ export const Login = () => {
 
     return (
         <div className='flex flex-col'>
-            <h1 className='mb-5'>Inicio de Sesión</h1>
-            <Link to='/about' className='text-red-500'>Sobre el proyecto</Link>
+            <h1 className='mb-5'>Cinemateca UAO</h1>
+            <h2 className='mb-5'><strong>Inicio de sesión</strong></h2>
+            <Link to='/about'>*About</Link>
             {errorText && <div>{errorText}</div>}
             <div className='flex flex-col max-w-96 min-w-80 gap-5 mx-auto my-7'>
                 <input
